@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nevra & Samet | Anılarımız</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lightgallery.min.css">
+    <link rel="stylesheet" href="ask.css">
+    <style>
+        /* Yedek: CSS yüklenmezse giriş kutusu yine görünsün */
+        .login-container { position: fixed; inset: 0; background: #1a1a1a; display: flex; align-items: center; justify-content: center; z-index: 9999; }
+        .login-box { background: #2a2a2a; color: #fff; padding: 2rem; border-radius: 16px; max-width: 380px; width: 90%; }
+        .login-box input { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #444; background: #333; color: #fff; box-sizing: border-box; }
+        .login-box button { width: 100%; padding: 12px; margin-top: 8px; background: #e91e63; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; }
+    </style>
+    <script>
+        function checkLogin(event) {
+            event.preventDefault();
+            var u = (document.getElementById('username') && document.getElementById('username').value) || '';
+            var p = (document.getElementById('password') && document.getElementById('password').value) || '';
+            u = u.trim().toLowerCase();
+            p = p.trim().toLowerCase();
+            if (u === 'nevra' && p === 'samet') {
+                var el = document.querySelector('.login-container');
+                if (el) { el.style.display = 'none'; }
+                document.body.style.overflow = 'auto';
+            } else {
+                alert('Kullanıcı adı veya şifre yanlış!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Giriş Ekranı -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Özel Albüm</h2>
+            <p class="login-subtitle">Anılarımıza hoş geldiniz</p>
+            <form onsubmit="checkLogin(event)">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Şifre" required>
+                </div>
+                <button type="submit" class="btn">Giriş Yap <i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Anasayfa</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#memories">Anılar</a></li>
+            <li><a href="#countdown">Sayacımız</a></li>
+            <li><a href="#message">Mesaj Bırak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Müzik Çalar -->
+    <div class="music-player">
+        <div class="music-controls">
+            <button id="prev-btn"><i class="fas fa-step-backward"></i></button>
+            <button id="play-btn"><i class="fas fa-play"></i></button>
+            <button id="next-btn"><i class="fas fa-step-forward"></i></button>
+        </div>
+        <div class="music-info">
+            <h4>Şu Çılgın Türkler</h4>
+            <p>Kıraç</p>
+        </div>
+        <audio id="background-music" loop>
+            <source src="DURULDUM.mp3" type="audio/mpeg">
+            Tarayıcınız bu ses dosyasını desteklemiyor.
+        </audio>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="overlay"></div>
+        <video class="background-video" autoplay muted loop playsinline>
+            <source src="arkaplan.mp4" type="video/mp4">
+            Tarayıcınız bu video formatını desteklemiyor.
+        </video>
+        <div class="header-content">
+            <h1>Nevra & Samet</h1>
+            <p>"Birlikte yazdığımız hikayemiz...</p>
+            <div class="scroll-down">
+                <span>Keşfet</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Galeri -->
+    <section id="gallery" class="gallery">
+        <div class="section-title">
+            <h2>Anılarımız</h2>
+            <div class="divider"></div>
+            <p>Birlikte yaşadığımız güzel anlardan kareler...</p>
+        </div>
+        <div class="upload-area">
+            <label for="gallery-upload" class="upload-btn">
+                <i class="fas fa-cloud-upload-alt"></i> Fotoğraf veya Video Yükle
+            </label>
+            <input type="file" id="gallery-upload" accept="image/*,video/*" multiple hidden>
+        </div>
+        <div class="gallery-grid" id="lightgallery">
+            <!-- Fotoğraflar -->
+            <a href="foto 1.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4><p>Birlikte geçirdiğimiz güzel bir gün</p>">
+                <img src="foto 1.jpg" alt="Nevra ve Samet">
+                <div class="gallery-overlay">
+                    <i class="fas fa-search-plus"></i>
+                </div>
+            </a>
+            <a href="foto2.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4>"><img src="foto2.jpg" alt="Nevra ve Samet"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a>
+            <a href="foto 3.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4>"><img src="foto 3.jpg" alt="Nevra ve Samet"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a>
+            <a href="foto 4.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4>"><img src="foto 4.jpg" alt="Nevra ve Samet"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a>
+            <a href="foto5.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4>"><img src="foto5.jpg" alt="Nevra ve Samet"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a>
+            <a href="foto6.jpg" class="gallery-item" data-sub-html="<h4>Mutlu Anılar</h4>"><img src="foto6.jpg" alt="Nevra ve Samet"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></a>
+            <!-- Videolar -->
+            <video src="video 2.mp4" controls></video>
+            <video src="video 3.mp4" controls></video>
+            <video src="video4.mp4" controls></video>
+            <video src="video 5.mp4" controls></video>
+            <video src="video 6.mp4" controls></video>
+            <video src="video 7.mp4" controls></video>
+            <video src="video 8.mp4" controls></video>
+            <video src="video9.mp4" controls></video>
+            <video src="video 10.mp4" controls></video>
+            <video src="video 14.mp4" controls></video>
+            <video src="video 15.mp4" controls></video>
+            <video src="WhatsApp Video 2025-01-19 saat 03.18.41_8b6498ef.mp4" controls></video>
+        </div>
+    </section>
+
+
+    <!-- Sayacımız -->
+    <section id="countdown" class="countdown-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Birlikte Geçen Süremiz</h2>
+                <div class="divider"></div>
+                <p>Birbirimize olan aşkımızın süresi</p>
+            </div>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label">Gün</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">Saat</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">Dakika</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">Saniye</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mesaj Bırak -->
+    <section id="message" class="message-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mesaj Bırak</h2>
+                <div class="divider"></div>
+                <p>Bizim için bir not bırakın, anılarımıza ortak olun ❤️</p>
+            </div>
+            <form class="message-form" onsubmit="sendMessage(event)">
+                <div class="input-group">
+                    <input type="text" name="author" class="message-author" placeholder="İsim (isteğe bağlı)" maxlength="50">
+                </div>
+                <div class="input-group">
+                    <textarea name="message" class="message-text" placeholder="Mesajınızı yazın..." rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-paper-plane"></i> Gönder
+                </button>
+            </form>
+            <h3 class="message-list-title">Bırakılan Mesajlar</h3>
+            <div class="message-list" id="message-list"></div>
+        </div>
+    </section>
+
+    <script src="supabase-config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/lightgallery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
